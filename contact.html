@@ -323,29 +323,44 @@
 </footer>
 
 <script>
-  function handleSubmit() {
+  async function handleSubmit() {
     const name    = document.getElementById('name').value.trim();
     const email   = document.getElementById('email').value.trim();
     const message = document.getElementById('message').value.trim();
+    const subject = document.getElementById('subject').value;
+    const company = document.getElementById('company').value.trim();
 
     if (!name || !email || !message) {
       alert('Please fill in Name, Email, and Message.');
       return;
     }
 
-    // ── TO WIRE UP A REAL BACKEND: ──
-    // Option A: Formspree — sign up at formspree.io, replace action URL:
-    //   fetch('https://formspree.io/f/YOUR_ID', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name, email, message}) })
-    //
-    // Option B: Netlify Forms — add `netlify` attribute to a <form> tag and wrap inputs
-    //
-    // Option C: EmailJS — free tier sends email directly from browser, no backend needed
+    const btn = document.querySelector('.contact-form button');
+    btn.textContent = 'SENDING...';
+    btn.disabled = true;
 
-    document.querySelector('.contact-form button').style.display = 'none';
-    document.getElementById('form-success').style.display = 'block';
+    try {
+      const res = await fetch('https://formspree.io/f/xgonjyel', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, company, subject, message })
+      });
+
+      if (res.ok) {
+        btn.style.display = 'none';
+        document.getElementById('form-success').style.display = 'block';
+      } else {
+        btn.textContent = 'SEND TRANSMISSION ›';
+        btn.disabled = false;
+        alert('Transmission failed. Try emailing directly.');
+      }
+    } catch(err) {
+      btn.textContent = 'SEND TRANSMISSION ›';
+      btn.disabled = false;
+      alert('Network error. Try emailing directly.');
+    }
   }
 </script>
-
 
 <script>
 function toggleMenu() {
