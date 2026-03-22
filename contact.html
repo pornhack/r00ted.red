@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Davide Vesentini</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 72px;
+    align-items: start;
+  }
+
+  /* LEFT COL */
+  .contact-info { display: flex; flex-direction: column; gap: 36px; }
+
+  .contact-intro { color: var(--text); line-height: 1.9; }
+
+  .contact-links {
+    display: flex; flex-direction: column;
+    gap: 1px; background: var(--border);
+  }
+  .contact-link {
+    background: var(--bg2);
+    padding: 18px 22px;
+    display: flex; align-items: center; gap: 16px;
+    text-decoration: none;
+    transition: background 0.2s;
+    color: var(--text);
+  }
+  .contact-link:hover { background: var(--bg3); }
+  .contact-link:hover .cl-label { color: var(--red); }
+
+  .cl-icon {
+    width: 38px; height: 38px;
+    border: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; flex-shrink: 0;
+    font-family: 'Orbitron', monospace;
+    color: var(--muted);
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .contact-link:hover .cl-icon { border-color: var(--red); color: var(--red); }
+
+  .cl-label {
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    transition: color 0.2s;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .cl-val { font-size: 13px; color: var(--white); }
+
+  .availability-box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 24px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .avail-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .avail-label::before { content: '// '; color: var(--red); }
+  .avail-status {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.1em;
+  }
+  .avail-note {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.7;
+    letter-spacing: 0.05em;
+  }
+
+  /* RIGHT COL — FORM */
+  .contact-form { display: flex; flex-direction: column; gap: 18px; }
+
+  .form-section-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--muted);
+    text-transform: uppercase;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 4px;
+  }
+  .form-section-label::before { content: '// '; color: var(--red); }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; }
+
+  label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+
+  input, textarea, select {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px;
+    padding: 12px 16px;
+    outline: none;
+    transition: border-color 0.2s;
+    resize: vertical;
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  input:focus, textarea:focus, select:focus { border-color: var(--red); }
+  input::placeholder, textarea::placeholder { color: var(--muted); opacity: 0.5; }
+
+  select option { background: var(--bg2); }
+
+  .form-note {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    line-height: 1.7;
+    padding: 12px 16px;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .form-note span { color: var(--red); }
+
+  /* Success message */
+  .form-success {
+    display: none;
+    text-align: center;
+    padding: 40px 24px;
+    border: 1px solid var(--red-dim);
+    background: var(--bg2);
+  }
+  .form-success .fs-icon { font-size: 2rem; margin-bottom: 16px; }
+  .form-success .fs-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--red);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .form-success p { font-size: 12px; color: var(--muted); }
+
+  @media (max-width: 860px) {
+    .contact-wrap { grid-template-columns: 1fr; gap: 48px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="index.html" class="logo">DAVIDE<span>.</span>VESENTINI</a>
+  </div>
+  <nav>
+    <a href="index.html" data-short="~">HOME</a>
+    <a href="about.html" data-short="A">ABOUT</a>
+    <a href="certificates.html" data-short="C">CERTS</a>
+    <a href="blog.html" data-short="B">BLOG</a>
+    <a href="contact.html" class="active" data-short="@">CONTACT</a>
+  </nav>
+</header>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>PENETRATION TESTER</span><span class="sep"> // </span>
+    <span>OFFENSIVE SECURITY</span><span class="sep"> // </span>
+    <span>WEB APP SECURITY</span><span class="sep"> // </span>
+    <span>RED TEAM OPS</span><span class="sep"> // </span>
+    <span>NETWORK SECURITY</span><span class="sep"> // </span>
+    <span>EXPLOIT DEVELOPMENT</span><span class="sep"> // </span>
+    <span>PENETRATION TESTER</span><span class="sep"> // </span>
+    <span>OFFENSIVE SECURITY</span><span class="sep"> // </span>
+    <span>WEB APP SECURITY</span><span class="sep"> // </span>
+    <span>RED TEAM OPS</span><span class="sep"> // </span>
+    <span>NETWORK SECURITY</span><span class="sep"> // </span>
+    <span>EXPLOIT DEVELOPMENT</span><span class="sep"> // </span>
+  </div>
+</div>
+
+<main class="page">
+  <div class="page-header fade-up">
+    <p class="page-eyebrow">04 — COMMS</p>
+    <h1>GET IN <em>TOUCH</em></h1>
+  </div>
+
+  <div class="contact-wrap">
+    <!-- LEFT: INFO -->
+    <div class="contact-info fade-up fade-up-2">
+      <p class="contact-intro">
+        Looking to test your defenses? Need a thorough security assessment? Let's talk. I operate with full confidentiality and deliver clear, actionable results — not just a PDF of scanner output.
+      </p>
+
+      <div class="contact-links">
+        <a href="mailto:davide@yourdomain.com" class="contact-link">
+          <div class="cl-icon">@</div>
+          <div>
+            <span class="cl-label">Email</span>
+            <span class="cl-val">davide@yourdomain.com</span>
+          </div>
+        </a>
+        <a href="https://linkedin.com/in/yourprofile" target="_blank" class="contact-link">
+          <div class="cl-icon">in</div>
+          <div>
+            <span class="cl-label">LinkedIn</span>
+            <span class="cl-val">linkedin.com/in/yourprofile</span>
+          </div>
+        </a>
+        <a href="https://github.com/yourgithub" target="_blank" class="contact-link">
+          <div class="cl-icon">&lt;/&gt;</div>
+          <div>
+            <span class="cl-label">GitHub</span>
+            <span class="cl-val">github.com/yourgithub</span>
+          </div>
+        </a>
+        <a href="https://tryhackme.com/p/yourprofile" target="_blank" class="contact-link">
+          <div class="cl-icon">⚑</div>
+          <div>
+            <span class="cl-label">TryHackMe</span>
+            <span class="cl-val">tryhackme.com/p/yourprofile</span>
+          </div>
+        </a>
+        <a href="https://app.hackthebox.com/profile/yourprofile" target="_blank" class="contact-link">
+          <div class="cl-icon">◈</div>
+          <div>
+            <span class="cl-label">HackTheBox</span>
+            <span class="cl-val">hackthebox.com/yourprofile</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="availability-box">
+        <div class="avail-label">CURRENT AVAILABILITY</div>
+        <div class="avail-status">● AVAILABLE FOR HIRE</div>
+        <div class="avail-note">
+          Currently accepting new engagements. Typical response time: 24–48h. All work covered by NDA on request.
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="contact-form fade-up fade-up-3">
+      <div class="form-section-label">SEND A TRANSMISSION</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="your@email.com">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="company">Company / Organization</label>
+        <input type="text" id="company" placeholder="Optional">
+      </div>
+
+      <div class="form-group">
+        <label for="subject">Engagement Type</label>
+        <select id="subject">
+          <option value="" disabled selected>Select type...</option>
+          <option>Web Application Pentest</option>
+          <option>Network Penetration Test</option>
+          <option>Red Team Operation</option>
+          <option>API Security Assessment</option>
+          <option>Active Directory Assessment</option>
+          <option>Social Engineering</option>
+          <option>Vulnerability Assessment</option>
+          <option>Other / General Inquiry</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" rows="6" placeholder="Describe your target scope, timeline, and objectives. The more context, the better."></textarea>
+      </div>
+
+      <div class="form-note">
+        <span>// NOTE:</span> All engagements are confidential. Do not include sensitive system details in this form — we'll discuss scope securely after initial contact.
+      </div>
+
+      <button class="btn" style="width:100%;" onclick="handleSubmit()">
+        SEND TRANSMISSION ›
+      </button>
+
+      <div class="form-success" id="form-success">
+        <div class="fs-icon">✓</div>
+        <div class="fs-title">TRANSMISSION RECEIVED</div>
+        <p>Message sent. I'll get back to you within 48 hours.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>© 2026 DAVIDE VESENTINI — ALL RIGHTS RESERVED</div>
+  <div style="display:flex;gap:24px;">
+    <a href="about.html">ABOUT</a>
+    <a href="certificates.html">CERTS</a>
+    <a href="blog.html">BLOG</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+  <div class="footer-signal">● SIGNAL ACTIVE</div>
+</footer>
+
+<script>
+  function handleSubmit() {
+    const name    = document.getElementById('name').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill in Name, Email, and Message.');
+      return;
+    }
+
+    // ── TO WIRE UP A REAL BACKEND: ──
+    // Option A: Formspree — sign up at formspree.io, replace action URL:
+    //   fetch('https://formspree.io/f/YOUR_ID', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({name, email, message}) })
+    //
+    // Option B: Netlify Forms — add `netlify` attribute to a <form> tag and wrap inputs
+    //
+    // Option C: EmailJS — free tier sends email directly from browser, no backend needed
+
+    document.querySelector('.contact-form button').style.display = 'none';
+    document.getElementById('form-success').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

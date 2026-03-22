@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — Davide Vesentini</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .photo-col { display: flex; flex-direction: column; gap: 20px; }
+
+  .about-img {
+    width: 100%; aspect-ratio: 3/4;
+    object-fit: cover;
+    filter: grayscale(20%) contrast(1.1);
+    border: 1px solid var(--border);
+    display: block;
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+  .det {
+    background: var(--bg2);
+    padding: 14px 18px;
+  }
+  .dk {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .dv { font-size: 13px; color: var(--white); }
+  .dv.red { color: var(--red); }
+
+  .about-content { display: flex; flex-direction: column; gap: 28px; }
+
+  .about-content p { color: var(--text); line-height: 1.9; }
+
+  .quote-block {
+    border-left: 2px solid var(--red);
+    padding: 4px 0 4px 24px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.8;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 0.24em;
+    color: var(--muted);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .section-label::before { content: '// '; color: var(--red); }
+
+  /* SERVICES */
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    margin-top: 56px;
+  }
+  .service-card {
+    background: var(--bg2);
+    padding: 28px 28px 32px;
+    transition: background 0.2s;
+  }
+  .service-card:hover { background: var(--bg3); }
+  .svc-icon {
+    font-size: 20px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  .svc-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+  .svc-desc {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  @media (max-width: 760px) {
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .photo-col { flex-direction: row; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
+    .about-img, .placeholder[style] { max-width: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="index.html" class="logo">DAVIDE<span>.</span>VESENTINI</a>
+  </div>
+  <nav>
+    <a href="index.html" data-short="~">HOME</a>
+    <a href="about.html" class="active" data-short="A">ABOUT</a>
+    <a href="certificates.html" data-short="C">CERTS</a>
+    <a href="blog.html" data-short="B">BLOG</a>
+    <a href="contact.html" data-short="@">CONTACT</a>
+  </nav>
+</header>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>PENETRATION TESTER</span><span class="sep"> // </span>
+    <span>OFFENSIVE SECURITY</span><span class="sep"> // </span>
+    <span>WEB APP SECURITY</span><span class="sep"> // </span>
+    <span>RED TEAM OPS</span><span class="sep"> // </span>
+    <span>NETWORK SECURITY</span><span class="sep"> // </span>
+    <span>EXPLOIT DEVELOPMENT</span><span class="sep"> // </span>
+    <span>PENETRATION TESTER</span><span class="sep"> // </span>
+    <span>OFFENSIVE SECURITY</span><span class="sep"> // </span>
+    <span>WEB APP SECURITY</span><span class="sep"> // </span>
+    <span>RED TEAM OPS</span><span class="sep"> // </span>
+    <span>NETWORK SECURITY</span><span class="sep"> // </span>
+    <span>EXPLOIT DEVELOPMENT</span><span class="sep"> // </span>
+  </div>
+</div>
+
+<main class="page">
+  <div class="page-header fade-up">
+    <p class="page-eyebrow">01 — PROFILE</p>
+    <h1>ABOUT <em>ME</em></h1>
+  </div>
+
+  <div class="about-grid">
+    <!-- PHOTO + DETAILS -->
+    <div class="photo-col fade-up fade-up-2">
+      <div class="placeholder" style="width:100%;aspect-ratio:3/4;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>YOUR PHOTO HERE</span>
+      </div>
+      <!-- <img src="assets/photo.jpg" alt="Davide Vesentini" class="about-img"> -->
+
+      <div class="details-grid">
+        <div class="det"><div class="dk">Location</div><div class="dv">Italy</div></div>
+        <div class="det"><div class="dk">Remote</div><div class="dv red">Yes</div></div>
+        <div class="det"><div class="dk">Focus</div><div class="dv">Offensive Sec</div></div>
+        <div class="det"><div class="dk">Status</div><div class="dv red">For Hire</div></div>
+        <div class="det" style="grid-column:span 2">
+          <div class="dk">Languages</div>
+          <div class="dv">Italian, English</div>
+        </div>
+      </div>
+
+      <a href="contact.html" class="btn" style="text-align:center;">HIRE ME ›</a>
+    </div>
+
+    <!-- BIO + SKILLS -->
+    <div class="about-content fade-up fade-up-3">
+      <p>
+        Hi, I'm <strong style="color:var(--white)">Davide Vesentini</strong>, a penetration tester specializing in offensive security operations. I help organizations identify and remediate vulnerabilities before malicious actors can exploit them.
+      </p>
+      <p>
+        My methodology is systematic and thorough — from reconnaissance and enumeration to exploitation and post-exploitation analysis. Every engagement is treated as a real-world attack simulation, delivering actionable reports that go beyond CVSS scores.
+      </p>
+
+      <div class="quote-block">
+        "I don't just find the hole in the fence — I show you exactly how an adversary would walk through it, what they'd take, and how to stop them."
+      </div>
+
+      <p>
+        I work with companies of all sizes, from startups to enterprise, across web applications, network infrastructure, API security, and social engineering assessments. Discrete, thorough, and always on the offensive side of the table.
+      </p>
+
+      <div>
+        <p class="section-label">SKILLS & TOOLS</p>
+        <div class="skill-tags">
+          <span class="skill-tag">Burp Suite</span>
+          <span class="skill-tag">Metasploit</span>
+          <span class="skill-tag">Nmap</span>
+          <span class="skill-tag">Kali Linux</span>
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Web App Testing</span>
+          <span class="skill-tag">Network Pentest</span>
+          <span class="skill-tag">OSINT</span>
+          <span class="skill-tag">Social Engineering</span>
+          <span class="skill-tag">Active Directory</span>
+          <span class="skill-tag">API Security</span>
+          <span class="skill-tag">Red Team Ops</span>
+          <span class="skill-tag">Wireshark</span>
+          <span class="skill-tag">SQLMap</span>
+          <span class="skill-tag">Cobalt Strike</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div style="margin-top:72px;" class="fade-up">
+    <p class="section-label">WHAT I DO</p>
+    <div class="services">
+      <div class="service-card">
+        <span class="svc-icon">🌐</span>
+        <div class="svc-title">Web Application Pentest</div>
+        <div class="svc-desc">Full OWASP Top 10 coverage, business logic flaws, authentication bypass, and API security testing.</div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">🔌</span>
+        <div class="svc-title">Network Penetration Test</div>
+        <div class="svc-desc">Internal and external network assessments, firewall bypass, lateral movement and privilege escalation.</div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">🎭</span>
+        <div class="svc-title">Red Team Operations</div>
+        <div class="svc-desc">Full adversary simulation — phishing, physical access, C2 infrastructure, and post-exploitation.</div>
+      </div>
+      <div class="service-card">
+        <span class="svc-icon">⚙️</span>
+        <div class="svc-title">API Security Assessment</div>
+        <div class="svc-desc">REST and GraphQL API testing, broken object level authorization, injection, and data exposure.</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div>© 2026 DAVIDE VESENTINI — ALL RIGHTS RESERVED</div>
+  <div style="display:flex;gap:24px;">
+    <a href="about.html">ABOUT</a>
+    <a href="certificates.html">CERTS</a>
+    <a href="blog.html">BLOG</a>
+    <a href="contact.html">CONTACT</a>
+  </div>
+  <div class="footer-signal">● SIGNAL ACTIVE</div>
+</footer>
+
+</body>
+</html>
