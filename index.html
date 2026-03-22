@@ -206,12 +206,16 @@
   .ql:hover .ql-arrow { color: var(--red); transform: translateX(4px); }
 
   @media (max-width: 860px) {
-    .hero { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding-bottom: 48px; }
     .hero-visual { display: none; }
     .quick-links { grid-template-columns: 1fr 1fr; }
+    .hero-text { padding: 48px 20px 32px; }
+    h1 { font-size: clamp(2rem, 10vw, 3.5rem); }
+    .hero-stats { gap: 24px; }
   }
   @media (max-width: 500px) {
     .quick-links { grid-template-columns: 1fr; }
+    .hero-stats .st .n { font-size: 1.4rem; }
   }
 </style>
 </head>
@@ -230,6 +234,9 @@
     <a href="blog.html" data-short="B">BLOG</a>
     <a href="contact.html" data-short="@">CONTACT</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </header>
 
 <!-- TICKER -->
@@ -327,6 +334,21 @@
   </div>
   <div class="footer-signal">● SIGNAL ACTIVE</div>
 </footer>
+
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+// close menu on link click
+document.querySelectorAll('.mobile-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+</script>
 
 </body>
 </html>

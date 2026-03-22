@@ -99,9 +99,13 @@
   }
 
   @media (max-width: 760px) {
-    .about-grid { grid-template-columns: 1fr; gap: 40px; }
-    .photo-col { flex-direction: row; align-items: flex-start; flex-wrap: wrap; gap: 16px; }
-    .about-img, .placeholder[style] { max-width: 200px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .photo-col { flex-direction: column; align-items: stretch; }
+    .services { grid-template-columns: 1fr; }
+    .details-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .details-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -118,7 +122,19 @@
     <a href="blog.html" data-short="B">BLOG</a>
     <a href="contact.html" data-short="@">CONTACT</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html" >HOME</a>
+  <a href="about.html" class="active">ABOUT</a>
+  <a href="certificates.html" >CERTS</a>
+  <a href="blog.html" >BLOG</a>
+  <a href="contact.html" >CONTACT</a>
+</nav>
 
 <div class="ticker">
   <div class="ticker-inner">
@@ -247,6 +263,21 @@
   </div>
   <div class="footer-signal">● SIGNAL ACTIVE</div>
 </footer>
+
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+// close menu on link click
+document.querySelectorAll('.mobile-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
+</script>
 
 </body>
 </html>

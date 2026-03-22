@@ -61,7 +61,12 @@
     color: var(--white);
   }
   .cert-issuer { font-size: 11px; color: var(--red); letter-spacing: 0.1em; }
-  .cert-year   { font-size: 10px; color: var(--muted); letter-spacing: 0.15em; margin-top: 4px; }
+  @media (max-width: 600px) {
+    .cert-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 380px) {
+    .cert-grid { grid-template-columns: 1fr; }
+  }
 
   /* LIGHTBOX */
   .lightbox {
@@ -115,7 +120,19 @@
     <a href="blog.html" data-short="B">BLOG</a>
     <a href="contact.html" data-short="@">CONTACT</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html" >HOME</a>
+  <a href="about.html" >ABOUT</a>
+  <a href="certificates.html" class="active">CERTS</a>
+  <a href="blog.html" >BLOG</a>
+  <a href="contact.html" >CONTACT</a>
+</nav>
 
 <div class="ticker">
   <div class="ticker-inner">
@@ -151,15 +168,15 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
             <rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/>
           </svg>
-          <span><img src="assets/cert-cpts.jpg" alt="OSCP" class="cert-img"></span>
+          <span>CERT IMAGE</span>
         </div>
         <!-- Replace placeholder with: <img src="assets/cert-oscp.jpg" alt="OSCP" class="cert-img"> -->
         <div class="cert-overlay"></div>
       </div>
       <div class="cert-info">
-        <div class="cert-name">CPTS</div>
-        <div class="cert-issuer">HTB Certified Penetration Testing Specialist</div>
-        <div class="cert-year">// 2025</div>
+        <div class="cert-name">OSCP</div>
+        <div class="cert-issuer">Offensive Security</div>
+        <div class="cert-year">// 20XX</div>
       </div>
     </div>
 
@@ -249,6 +266,21 @@
     document.getElementById('lightbox').classList.remove('open');
   }
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+// close menu on link click
+document.querySelectorAll('.mobile-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
 </script>
 
 </body>

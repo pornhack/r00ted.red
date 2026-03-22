@@ -129,7 +129,11 @@
     text-transform: uppercase;
     margin-top: 6px;
   }
-  .post-read::after { content: ' →'; }
+  @media (max-width: 700px) {
+    .blog-grid { grid-template-columns: 1fr; }
+    .filter-bar { gap: 6px; }
+    .filter-btn { padding: 6px 12px; font-size: 9px; }
+  }
 </style>
 </head>
 <body>
@@ -145,7 +149,19 @@
     <a href="blog.html" class="active" data-short="B">BLOG</a>
     <a href="contact.html" data-short="@">CONTACT</a>
   </nav>
+  <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+
+<!-- MOBILE NAV -->
+<nav class="mobile-nav" id="mobile-nav">
+  <a href="index.html" >HOME</a>
+  <a href="about.html" >ABOUT</a>
+  <a href="certificates.html" >CERTS</a>
+  <a href="blog.html" class="active">BLOG</a>
+  <a href="contact.html" >CONTACT</a>
+</nav>
 
 <div class="ticker">
   <div class="ticker-inner">
@@ -336,6 +352,21 @@ alg: none <span class="good">[VULNERABLE]</span>
       }
     });
   }
+</script>
+
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobile-nav').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+}
+// close menu on link click
+document.querySelectorAll('.mobile-nav a').forEach(a => {
+  a.addEventListener('click', () => {
+    document.getElementById('mobile-nav').classList.remove('open');
+    document.getElementById('hamburger').classList.remove('open');
+  });
+});
 </script>
 
 </body>
