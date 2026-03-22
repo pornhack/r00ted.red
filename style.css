@@ -8,10 +8,10 @@
   --red-dim:  #991122;
   --red-glow: rgba(255,34,51,0.15);
   --amber:    #ff8800;
-  --text:     #d0c8c8;
-  --muted:    #664444;
-  --border:   #1e0e0e;
-  --white:    #f0e8e8;
+  --text:     #f0f0f0;
+  --muted:    #a08888;
+  --border:   #2a1a1a;
+  --white:    #ffffff;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -101,7 +101,7 @@ nav a {
   display: flex;
   align-items: center;
   padding: 0 22px;
-  color: var(--muted);
+  color: #c0a0a0;
   text-decoration: none;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -139,7 +139,7 @@ nav a.active::after {
   animation: ticker 28s linear infinite;
   font-size: 10px;
   letter-spacing: 0.22em;
-  color: var(--muted);
+  color: #b09090;
   text-transform: uppercase;
 }
 .ticker-inner span { margin: 0 36px; }
